@@ -10,7 +10,7 @@ public class LoggerManager {
     private Logger logger;
     private static LoggerManager instace;
 
-    private LoggerManager() {
+    public LoggerManager() {
         initialize();
     }
 

@@ -12,7 +12,7 @@ public class Environment {
     private static final LoggerManager log = LoggerManager.getInstance();
     private static Environment instance;
 
-    private Environment() {
+    public Environment() {
         initialize();
     }
 

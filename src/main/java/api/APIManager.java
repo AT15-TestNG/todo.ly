@@ -10,7 +10,7 @@ public class APIManager {
     private static final LoggerManager log = LoggerManager.getInstance();
     private  static APIManager instance;
 
-    private APIManager() {
+    public APIManager() {
         initialize();
     }
 
