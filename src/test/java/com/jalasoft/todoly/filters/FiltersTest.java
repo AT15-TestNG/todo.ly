@@ -16,8 +16,6 @@ public class FiltersTest {
     @BeforeClass
     public void setup() {
         api.setCredentials(env.getUserName(), env.getPassword());
-
-
     }
 
     @Test (priority=2)
@@ -25,5 +23,8 @@ public class FiltersTest {
         Reporter.log("Verify that a 200 OK status code and a correct response body result when a GET request to the \"/filters.json\" endpoint is executed", true);
         Response res = api.get(env.getFiltersEndpoint());
         Assert.assertEquals(res.getStatusCode(), 200, "Correct status code");
+        Assert.assertTrue(res.getStatusLine().contains("200 OK"), "Correct status code and message is not returned");
+        Assert.assertFalse(res.getBody().asString().contains("ErrorMessage"), "Error Message was returned");
+        Assert.assertFalse(res.getBody().asString().contains("ErrorCode"), "Error Code was returned");
     }
 }
