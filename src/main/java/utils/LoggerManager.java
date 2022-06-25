@@ -8,17 +8,17 @@ import java.io.File;
 
 public class LoggerManager {
     private Logger logger;
-    private static LoggerManager instace;
+    private static LoggerManager instance;
 
     private LoggerManager() {
         initialize();
     }
 
     public static LoggerManager getInstance() {
-        if (instace == null) {
-            instace = new LoggerManager();
+        if (instance == null) {
+            instance = new LoggerManager();
         }
-        return instace;
+        return instance;
     }
 
     private void initialize() {
