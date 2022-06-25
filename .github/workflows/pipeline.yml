@@ -10,7 +10,13 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          java-version: '16.0.2'
+          distribution: 'amazon-corretto'
       - name: See the current directory
         run: |
           echo "Current directory: $(pwd)"
+          java --version
           ls -la
