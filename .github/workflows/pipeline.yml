@@ -1,0 +1,16 @@
+name: Todo.ly Pipeline
+
+on:
+  push:
+    branches:
+      - '**'
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: See the current directory
+      - run: |
+          echo "Current directory: $(pwd)"
+          ls -la
