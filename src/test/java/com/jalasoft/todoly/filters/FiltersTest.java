@@ -1,6 +1,7 @@
 package com.jalasoft.todoly.filters;
 
 import api.APIManager;
+import entities.Filter;
 import framework.Environment;
 import io.restassured.response.Response;
 import org.testng.Assert;
@@ -15,6 +16,8 @@ public class FiltersTest {
     @BeforeClass
     public void setup() {
         api.setCredentials(env.getUserName(), env.getPassword());
+
+
     }
 
     @Test (priority=2)
@@ -23,5 +26,4 @@ public class FiltersTest {
         Response res = api.get(env.getFiltersEndpoint());
         Assert.assertEquals(res.getStatusCode(), 200, "Correct status code");
     }
-
 }
