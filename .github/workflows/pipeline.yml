@@ -11,6 +11,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: See the current directory
-      - run: |
+        run: |
           echo "Current directory: $(pwd)"
           ls -la
