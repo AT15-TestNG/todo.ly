@@ -35,16 +35,7 @@ public class APIManager {
     }
 
     public Response get(String endpoint) {
-        return RestAssured
-//                .given()
-//                    .auth()
-//                    .preemptive()
-//                    .basic(Environment.getInstance().getUserName(), Environment.getInstance().getPassword())
-                .when()
-                    .get(endpoint)
-                .then()
-                    .extract()
-                    .response();
+        return RestAssured.given().get(endpoint);
     }
 
 }

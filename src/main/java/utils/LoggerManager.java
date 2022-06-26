@@ -30,10 +30,10 @@ public class LoggerManager {
 
     public void logMessage(String type, String message) {
         switch (type) {
-            case "debug" -> getInstance().logger.debug(message);
-            case "error" -> getInstance().logger.error(message);
-            case "info" -> getInstance().logger.info(message);
-            case "warn" -> getInstance().logger.warn(message);
+            case "debug" : getInstance().logger.debug(message);
+            case "error" : getInstance().logger.error(message);
+            case "info" : getInstance().logger.info(message);
+            case "warn" : getInstance().logger.warn(message);
         }
     }
 
