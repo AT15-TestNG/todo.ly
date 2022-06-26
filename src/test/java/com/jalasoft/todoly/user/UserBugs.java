@@ -24,7 +24,7 @@ public class UserBugs {
     }
 
     @Test
-    public void userInvalidRequest() {
+    public void userInvalidRequestBug() {
         Reporter.log("Verify that Error 101 Invalid Request is returned in the response body when a GET request to the invalid \"user/1/items.json\" endpoint is executed", true);
         Response response = api.get("user/1/items.json");
 
@@ -35,7 +35,7 @@ public class UserBugs {
     }
 
     @Test
-    public void userGetWithBody() {
+    public void userGetWithBodyBug() {
         Reporter.log("Verify that an Error is returned in the response body when a GET request with a Body to \"/user.json\" endpoint is executed", true);
         Map<String, Object> jsonAsMap = new HashMap<>();
         jsonAsMap.put("Email", "juandelete@email.com");
@@ -77,7 +77,7 @@ public class UserBugs {
     }
 
     @Test
-    public void userPostWithIncorrectPayload() {
+    public void userPostWithIncorrectPayloadBug() {
         Reporter.log("Verify that an Error is returned in the response body when a POST request with an incorrect Body format (payload) to \"/user.xml\" endpoint is executed", true);
         NewUser newUser = new NewUser("juandelete@email.com", "password", "Juan to be Deleted");
         Response response = api.post("/user.xml", ContentType.JSON, newUser);
