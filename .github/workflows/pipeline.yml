@@ -21,7 +21,7 @@ jobs:
         run: ./gradlew test
 
   CodeInspection:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     needs: Tests
     steps:
     - uses: actions/checkout@v2
@@ -29,7 +29,6 @@ jobs:
         # Disabling shallow clone is recommended for improving relevancy of reporting
         fetch-depth: 0
     - name: SonarQube Scan
-      uses: sonarsource/sonarqube-scan-action@master
+      run: ./gradlew sonarqube
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
