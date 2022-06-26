@@ -71,4 +71,6 @@ public class Environment {
     public String getUserEndpoint() {
         return getEnvironmentSetting("userEndpoint");
     }
+
+    public String getUserByIdEndPoint() { return getEnvironmentSetting("userByIdEndPoint"); }
 }

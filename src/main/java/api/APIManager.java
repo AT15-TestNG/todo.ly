@@ -3,6 +3,7 @@ package api;
 import framework.Environment;
 import io.restassured.RestAssured;
 import io.restassured.authentication.PreemptiveBasicAuthScheme;
+import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import utils.LoggerManager;
 
@@ -38,4 +39,15 @@ public class APIManager {
         return RestAssured.given().get(endpoint);
     }
 
+    public Response post(String endpoint, ContentType contentType, Object object) {
+        return RestAssured.given().contentType(contentType).body(object).post(endpoint);
+    }
+
+    public Response delete(String endpoint) {
+        return  RestAssured.given().delete(endpoint);
+    }
+
+    public Response put(String endpoint, ContentType contentType, Object object) {
+        return RestAssured.given().contentType(contentType).body(object).put(endpoint);
+    }
 }
