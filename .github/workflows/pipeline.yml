@@ -15,7 +15,7 @@ jobs:
         with:
           java-version: '16.0.2'
           distribution: 'adopt'
+      - name: Grant execute permissions for gradlew
+        run: chmod +x gradlew
       - name: Run tests
-        run: |
-          chmod +x ./gradlew
-          ./gradlew clean test
+        run: ./gradlew test
