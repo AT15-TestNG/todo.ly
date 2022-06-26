@@ -23,7 +23,7 @@ public class LoggerManager {
 
     private void initialize() {
         LoggerContext context = (LoggerContext) LogManager.getContext(false);
-        File file = new File("log4j.properties");
+        File file = new File("log4j2.properties");
         context.setConfigLocation(file.toURI());
         logger = LogManager.getLogger(LoggerManager.class);
     }

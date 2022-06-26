@@ -21,6 +21,11 @@ jobs:
         run: chmod +x gradlew
       - name: Build API Testing framework
         run: ./gradlew clean build
+      - name: Publish Test Results
+        uses: EnricoMi/publish-unit-test-result-action/composite@v1
+        if: always()
+        with:
+          files: "build/test-results/**/*.xml"
 
   CodeInspection:
     runs-on: ubuntu-20.04
