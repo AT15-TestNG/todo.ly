@@ -50,4 +50,8 @@ public class APIManager {
     public Response put(String endpoint, ContentType contentType, Object object) {
         return RestAssured.given().contentType(contentType).body(object).put(endpoint);
     }
+
+    public Response getWithBody(String endpoint, ContentType contentType, Object object) {
+        return RestAssured.given().contentType(contentType).body(object).get(endpoint);
+    }
 }
