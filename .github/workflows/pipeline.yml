@@ -17,4 +17,5 @@ jobs:
           distribution: 'adopt'
       - name: Run tests
         run: |
+          chmod +x ./gradlew
           ./gradlew clean test
