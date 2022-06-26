@@ -33,4 +33,4 @@ jobs:
     - name: Grant execute permissions for gradlew
       run: chmod +x gradlew
     - name: SonarQube Scan
-      run: ./gradlew sonarqube
+      run: ./gradlew sonarqube -Dsonar.projectKey=testng-todo.ly -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=${{ secrets.SONAR_TOKEN }}
