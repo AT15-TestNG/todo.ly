@@ -19,7 +19,7 @@ public class ProjectsTest {
 
     @Test
     public void getProjects() {
-        Reporter.log("Verify that a 200 OK status code and a correct response body result when a GET resquest to the \"/projects.json\" endpoint is executed", true);
+        Reporter.log("Verify that a 200 OK status code and a correct response body result when a GET request to the \"/projects.json\" endpoint is executed", true);
         Response response = apiManager.get(environment.getProjectsEndpoint());
 
         Assert.assertEquals(response.statusCode(), 200, "Correct status code is not returned");

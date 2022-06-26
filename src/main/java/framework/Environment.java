@@ -52,6 +52,14 @@ public class Environment {
         return getEnvironmentSetting("password");
     }
 
+    public String getInvalidUserName() {
+        return getEnvironmentSetting("invalidUserName");
+    }
+
+    public String getInvalidPassword() {
+        return getEnvironmentSetting("invalidPassword");
+    }
+
     public String getBasePath() {
         return getEnvironmentSetting("basePath");
     }
