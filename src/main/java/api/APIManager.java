@@ -15,13 +15,10 @@ public class APIManager {
     }
 
     public static APIManager getInstance() {
-        if (instance == null) {
-            instance = new APIManager();
-        }
-        return instance;
+        return (instance == null) ? instance = new APIManager() : instance;
     }
 
-    private void initialize() {
+    private static void initialize() {
         log.info("Initializing API Manager");
         RestAssured.baseURI = Environment.getInstance().getBaseURL();
         RestAssured.basePath = Environment.getInstance().getBasePath();

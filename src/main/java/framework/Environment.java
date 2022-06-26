@@ -17,10 +17,7 @@ public class Environment {
     }
 
     public static Environment getInstance() {
-        if (instance == null) {
-            instance = new Environment();
-        }
-        return instance;
+        return (instance == null) ? instance = new Environment() : instance;
     }
 
     private void initialize() {

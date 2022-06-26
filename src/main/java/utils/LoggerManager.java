@@ -1,5 +1,6 @@
 package utils;
 
+import framework.Environment;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.core.LoggerContext;
@@ -15,10 +16,7 @@ public class LoggerManager {
     }
 
     public static LoggerManager getInstance() {
-        if (instance == null) {
-            instance = new LoggerManager();
-        }
-        return instance;
+        return (instance == null) ? instance = new LoggerManager() : instance;
     }
 
     private void initialize() {
@@ -30,10 +28,10 @@ public class LoggerManager {
 
     public void logMessage(String type, String message) {
         switch (type) {
-            case "debug" : getInstance().logger.debug(message);
-            case "error" : getInstance().logger.error(message);
-            case "info" : getInstance().logger.info(message);
-            case "warn" : getInstance().logger.warn(message);
+            case "debug" -> getInstance().logger.debug(message);
+            case "error" -> getInstance().logger.error(message);
+            case "info" -> getInstance().logger.info(message);
+            case "warn" -> getInstance().logger.warn(message);
         }
     }
 

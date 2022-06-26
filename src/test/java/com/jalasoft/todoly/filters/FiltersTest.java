@@ -1,7 +1,6 @@
 package com.jalasoft.todoly.filters;
 
 import api.APIManager;
-import entities.Filter;
 import framework.Environment;
 import io.restassured.response.Response;
 import org.testng.Assert;
