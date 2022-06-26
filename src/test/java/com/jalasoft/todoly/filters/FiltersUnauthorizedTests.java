@@ -53,8 +53,6 @@ public class FiltersUnauthorizedTests {
         String doneItemsOfAFilterEndpoint = String.format(env.getItemsOfFilterEndpoint(), -1);
         Response res = api.get(doneItemsOfAFilterEndpoint);
 
-        System.out.println(res.getBody().asString());
-
         Assert.assertEquals(res.getStatusCode(), 200, "Correct status code is not returned");
         Assert.assertTrue(res.getStatusLine().contains("200 OK"), "Correct status code and message is not returned");
         Assert.assertTrue(res.jsonPath().getString("ErrorMessage").contains("Account doesn't exist"), "Correct ErrorMessage is not returned");
