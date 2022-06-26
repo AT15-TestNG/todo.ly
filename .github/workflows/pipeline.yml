@@ -6,7 +6,7 @@ on:
       - '**'
 
 jobs:
-  build:
+  tests:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
@@ -15,8 +15,6 @@ jobs:
         with:
           java-version: '16.0.2'
           distribution: 'adopt'
-      - name: See the current directory
+      - name: Run tests
         run: |
-          echo "Current directory: $(pwd)"
-          java --version
-          ls -la
+          ./gradlew clean test
