@@ -108,8 +108,10 @@ public class Environment {
         return getEnvironmentSetting("userEndpoint");
     }
 
-    public String getUserByIdEndPoint() {
-        return getEnvironmentSetting("userByIdEndPoint");
+    public String getUserByIdEndPoint() { return getEnvironmentSetting("userByIdEndPoint"); }
+
+    public String getIconsByIdEndPoint() {
+        return getEnvironmentSetting("iconsByIdEndPoint");
     }
 }
 
