@@ -27,7 +27,11 @@ jobs:
     needs: Build
     steps:
     - uses: actions/checkout@v2
+    - name: Set up JDK
+      uses: actions/setup-java@v3
       with:
+        java-version: '16.0.2'
+        distribution: 'adopt'
         # Disabling shallow clone is recommended for improving relevancy of reporting
         fetch-depth: 0
     - name: Grant execute permissions for gradlew
