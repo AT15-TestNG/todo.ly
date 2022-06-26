@@ -28,6 +28,8 @@ jobs:
       with:
         # Disabling shallow clone is recommended for improving relevancy of reporting
         fetch-depth: 0
+    - name: Grant execute permissions for gradlew
+      run: chmod +x gradlew
     - name: SonarQube Scan
       run: ./gradlew sonarqube
       env:
