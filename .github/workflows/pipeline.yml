@@ -1,0 +1,40 @@
+name: Todo.ly Pipeline
+
+on:
+  push:
+    branches:
+      - '**'
+env:
+  SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+jobs:
+  Build:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          java-version: '16.0.2'
+          distribution: 'adopt'
+      - name: Grant execute permissions for gradlew
+        run: chmod +x gradlew
+      - name: Build API Testing framework
+        run: ./gradlew clean build
+
+  CodeInspection:
+    runs-on: ubuntu-20.04
+    needs: Build
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up JDK
+      uses: actions/setup-java@v3
+      with:
+        java-version: '16.0.2'
+        distribution: 'adopt'
+        # Disabling shallow clone is recommended for improving relevancy of reporting
+        fetch-depth: 0
+    - name: Grant execute permissions for gradlew
+      run: chmod +x gradlew
+    - name: SonarQube Scan
+      run: ./gradlew sonarqube
