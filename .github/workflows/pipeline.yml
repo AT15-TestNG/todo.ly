@@ -8,7 +8,7 @@ env:
   SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
 jobs:
-  Tests:
+  Build:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
@@ -19,8 +19,8 @@ jobs:
           distribution: 'adopt'
       - name: Grant execute permissions for gradlew
         run: chmod +x gradlew
-      - name: Run tests
-        run: ./gradlew test
+      - name: Build API Testing framework
+        run: ./gradlew clean build
 
   CodeInspection:
     runs-on: ubuntu-20.04
@@ -33,4 +33,4 @@ jobs:
     - name: Grant execute permissions for gradlew
       run: chmod +x gradlew
     - name: SonarQube Scan
-      run: ./gradlew sonarqube -Dsonar.projectKey=testng-todo.ly -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+      run: ./gradlew sonarqube
