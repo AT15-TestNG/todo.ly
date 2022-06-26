@@ -22,7 +22,7 @@ public class FiltersUnauthorizedTests {
 
         Assert.assertEquals(res.getStatusCode(), 200, "Correct status code is not returned");
         Assert.assertTrue(res.getStatusLine().contains("200 OK"), "Correct status code and message is not returned");
-        Assert.assertTrue(res.getBody().asString().contains("\"ErrorMessage\":\"Account doesn't exist\""), "Error Message was not returned");
+        Assert.assertTrue(res.jsonPath().getString("ErrorMessage").contains("Account doesn't exist"), "Correct ErrorMessage is not returned");
         Assert.assertTrue(res.getBody().asString().contains("\"ErrorCode\":105"), "Error code was not returned");
     }
 
@@ -33,7 +33,7 @@ public class FiltersUnauthorizedTests {
 
         Assert.assertEquals(res.getStatusCode(), 200, "Correct status code is not returned");
         Assert.assertTrue(res.getStatusLine().contains("200 OK"), "Correct status code and message is returned");
-        Assert.assertTrue(res.getBody().asString().contains("\"ErrorMessage\":\"Account doesn't exist\""), "Error Message was not returned");
+        Assert.assertTrue(res.jsonPath().getString("ErrorMessage").contains("Account doesn't exist"), "Correct ErrorMessage is not returned");
         Assert.assertTrue(res.getBody().asString().contains("\"ErrorCode\":105"), "Error code was not returned");
     }
 
@@ -44,7 +44,7 @@ public class FiltersUnauthorizedTests {
 
         Assert.assertEquals(res.getStatusCode(), 200, "Correct status code is not returned");
         Assert.assertTrue(res.getStatusLine().contains("200 OK"), "Correct status code and message is not returned");
-        Assert.assertTrue(res.getBody().asString().contains("\"ErrorMessage\":\"Account doesn't exist\""), "Error Message was not returned");
+        Assert.assertTrue(res.jsonPath().getString("ErrorMessage").contains("Account doesn't exist"), "Correct ErrorMessage is not returned");
         Assert.assertTrue(res.getBody().asString().contains("\"ErrorCode\":105"), "Error code was not returned");
     }
 
@@ -53,9 +53,11 @@ public class FiltersUnauthorizedTests {
         String doneItemsOfAFilterEndpoint = String.format(env.getItemsOfFilterEndpoint(), -1);
         Response res = api.get(doneItemsOfAFilterEndpoint);
 
+        System.out.println(res.getBody().asString());
+
         Assert.assertEquals(res.getStatusCode(), 200, "Correct status code is not returned");
         Assert.assertTrue(res.getStatusLine().contains("200 OK"), "Correct status code and message is not returned");
-        Assert.assertTrue(res.getBody().asString().contains("\"ErrorMessage\":\"Account doesn't exist\""), "Error Message was not returned");
+        Assert.assertTrue(res.jsonPath().getString("ErrorMessage").contains("Account doesn't exist"), "Correct ErrorMessage is not returned");
         Assert.assertTrue(res.getBody().asString().contains("\"ErrorCode\":105"), "Error code was not returned");
     }
 }
