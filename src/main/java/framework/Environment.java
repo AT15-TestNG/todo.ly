@@ -68,6 +68,9 @@ public class Environment {
         return getEnvironmentSetting("projectsEndpoint");
     }
 
+    public String getProjectByIdEndpoint() {
+        return getEnvironmentSetting("projectByIdEndpoint");
+    }
     public String getFiltersEndpoint() {
         return getEnvironmentSetting("filtersEndPoint");
     }
@@ -89,4 +92,5 @@ public class Environment {
     }
 
     public String getUserByIdEndPoint() { return getEnvironmentSetting("userByIdEndPoint"); }
+
 }

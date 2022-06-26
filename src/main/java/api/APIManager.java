@@ -55,3 +55,4 @@ public class APIManager {
         return RestAssured.given().contentType(contentType).body(object).get(endpoint);
     }
 }
+
