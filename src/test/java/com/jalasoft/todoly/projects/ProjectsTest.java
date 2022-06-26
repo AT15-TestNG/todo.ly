@@ -22,10 +22,6 @@ public class ProjectsTest {
         Reporter.log("Verify that a 200 OK status code and a correct response body result when a GET resquest to the \"/projects.json\" endpoint is executed", true);
         Response response = apiManager.get(environment.getProjectsEndpoint());
 
-        System.out.println(response.body().asString());
-        System.out.println(response.statusCode());
-        System.out.println(response.statusLine());
-
         Assert.assertEquals(response.statusCode(), 200, "Correct status code is not returned");
         Assert.assertTrue(response.statusLine().contains("200 OK"), "Correct status code and message is not returned");
         Assert.assertFalse(response.body().asString().contains("ErrorMessage"), "Correct response body is returned");

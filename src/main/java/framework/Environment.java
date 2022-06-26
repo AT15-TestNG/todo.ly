@@ -67,4 +67,8 @@ public class Environment {
     public String getFiltersByIdEndPoint() {
         return getEnvironmentSetting("filtersByIdEndPoint");
     }
+
+    public String getUserEndpoint() {
+        return getEnvironmentSetting("userEndpoint");
+    }
 }
