@@ -42,7 +42,7 @@ jobs:
 
   AcceptanceTests:
     runs-on: ubuntu-20.04
-    needs: Build
+    needs: CodeInspection
     steps:
       - uses: actions/checkout@v2
       - name: Set up JDK
