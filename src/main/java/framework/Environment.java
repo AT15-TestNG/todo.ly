@@ -47,17 +47,22 @@ public class Environment {
     public String getUserName() {
         return getEnvironmentSetting("userName");
     }
+    public String getGetAllProjectsUser() {
+        return getEnvironmentSetting("getAllProjectsUser");
+    }
 
     public String getPassword() {
         return getEnvironmentSetting("password");
     }
-
     public String getInvalidUserName() {
         return getEnvironmentSetting("invalidUserName");
     }
-
     public String getInvalidPassword() {
         return getEnvironmentSetting("invalidPassword");
+    }
+
+    public String getGetAllProjectsPassword() {
+        return getEnvironmentSetting("getAllProjectsPassword");
     }
 
     public String getBasePath() {
@@ -68,6 +73,17 @@ public class Environment {
         return getEnvironmentSetting("projectsEndpoint");
     }
 
+    //Items environment, it might have to change, talk with Sergio
+    public String getItemsProjectsEndpoint() {
+        return getEnvironmentSetting("itemsProjectByIdEndpoint");
+    }
+    public String getCreateItemEndpoint() {
+        return getEnvironmentSetting("createItemEndpoint");
+    }
+
+    public String getProjectByIdEndpoint() {
+        return getEnvironmentSetting("projectByIdEndpoint");
+    }
     public String getFiltersEndpoint() {
         return getEnvironmentSetting("filtersEndPoint");
     }
@@ -80,6 +96,10 @@ public class Environment {
         return getEnvironmentSetting("itemsOfAFilterEndpoint");
     }
 
+    public String getDoneItemsOfAProjectEndpoint() {
+        return getEnvironmentSetting("doneItemsOfAProjectEndpoint");
+    }
+
     public String getDoneItemsOfFilterEndpoint() {
         return getEnvironmentSetting("doneItemsOfAFilterEndpoint");
     }
@@ -88,5 +108,8 @@ public class Environment {
         return getEnvironmentSetting("userEndpoint");
     }
 
-    public String getUserByIdEndPoint() { return getEnvironmentSetting("userByIdEndPoint"); }
+    public String getUserByIdEndPoint() {
+        return getEnvironmentSetting("userByIdEndPoint");
+    }
 }
+
