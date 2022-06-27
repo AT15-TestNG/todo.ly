@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id "org.sonarqube" version "3.4.0.2513"
+    id "maven-publish"
 }
 
 group 'jalasoft'
@@ -12,6 +13,7 @@ repositories {
 
 dependencies {
     testImplementation group: 'org.testng', name: 'testng', version: '7.6.0'
+    testImplementation 'io.qameta.allure:allure-testng:2.17.2'
     implementation group: 'io.rest-assured', name: 'rest-assured', version: '5.1.1'
     implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.17.2'
     implementation group: 'org.slf4j', name: 'slf4j-simple', version: '2.0.0-alpha7'
