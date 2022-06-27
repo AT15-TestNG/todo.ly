@@ -30,6 +30,9 @@ public class GetDoneItemsOfAProjectTests {
         if (projects.get(0) == null) {
             Assert.fail("Projects were not created");
         }
+        if (items.get(0) == null) {
+            Assert.fail("Item was not created");
+        }
     }
 
     @Test
@@ -39,12 +42,13 @@ public class GetDoneItemsOfAProjectTests {
         Item item = items.get(0);
         String doneItemsProjectByIdEndpoint = String.format(environment.getDoneItemsOfAProjectEndpoint(), project.getId());
         Response response = apiManager.get(doneItemsProjectByIdEndpoint);
+        Item[] items = response.as(Item[].class);
 
         Assert.assertEquals(response.getStatusCode(), 200, "Correct status code is not returned");
         Assert.assertTrue(response.getStatusLine().contains("200 OK"), "Correct status code and message is not returned");
-        Assert.assertEquals(response.jsonPath().getString("ErrorMessage"), "[null]", "Error Message was returned");
-        Assert.assertEquals(response.jsonPath().getString("ErrorCode"), "[null]","Error Code was returned");
-        Assert.assertEquals(response.jsonPath().getString("Checked"), "[true]", "Done Item 1 is not found");
+        Assert.assertFalse(response.getBody().asString().contains("ErrorMessage"), "Error Message was returned");
+        Assert.assertFalse(response.getBody().asString().contains("ErrorCode"), "Error Code was returned");
+        Assert.assertTrue(items[0].getChecked(),"Done Item 1 is not found");
     }
 
     @AfterClass

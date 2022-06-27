@@ -30,6 +30,10 @@ public class GetItemsOfAProjectTests {
         if (projects.get(0) == null) {
             Assert.fail("Projects were not created");
         }
+        if (items.get(0) == null) {
+            Assert.fail("Item was not created");
+        }
+
     }
 
     @Test
@@ -39,18 +43,18 @@ public class GetItemsOfAProjectTests {
         Item item = items.get(0);
         String itemsProjectByIdEndpoint = String.format(environment.getItemsProjectsEndpoint(), project.getId());
         Response response = apiManager.get(itemsProjectByIdEndpoint);
+        Item[] itemsResponse = response.as(Item[].class);
         String projectByIdEndpoint = String.format(environment.getProjectByIdEndpoint(), project.getId());
         Response projectResponse = apiManager.get(projectByIdEndpoint);
         Project responseProject = projectResponse.as(Project.class);
 
         Assert.assertEquals(response.getStatusCode(), 200, "Correct status code is not returned");
         Assert.assertTrue(response.getStatusLine().contains("200 OK"), "Correct status code and message is not returned");
-        Assert.assertEquals(response.jsonPath().getString("ErrorMessage"), "[null]", "Error Message was returned");
-        Assert.assertEquals(response.jsonPath().getString("ErrorCode"), "[null]","Error Code was returned");
-        Assert.assertEquals(responseProject.getItemsCount(), items.size(), "item 1 is not found");
-
+        Assert.assertFalse(response.getBody().asString().contains("ErrorMessage"), "Error Message was returned");
+        Assert.assertFalse(response.getBody().asString().contains("ErrorCode"), "Error Code was returned");
+        Assert.assertEquals(responseProject.getItemsCount(),1,"not item was found in the project");
+        Assert.assertEquals(itemsResponse[0].getContent(), items.get(0).getContent(),"item 1 was not found");
     }
-
     @AfterClass
     public void teardown() {
         for (Project project : projects) {
