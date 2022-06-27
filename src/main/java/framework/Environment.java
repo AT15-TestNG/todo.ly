@@ -96,6 +96,10 @@ public class Environment {
         return getEnvironmentSetting("itemsOfAFilterEndpoint");
     }
 
+    public String getDoneItemsOfAProjectEndpoint() {
+        return getEnvironmentSetting("doneItemsOfAProjectEndpoint");
+    }
+
     public String getDoneItemsOfFilterEndpoint() {
         return getEnvironmentSetting("doneItemsOfAFilterEndpoint");
     }

@@ -7,13 +7,14 @@ import entities.Project;
 import framework.Environment;
 import io.restassured.response.Response;
 import org.testng.Assert;
+import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;
 
-public class GetItemsOfAProject {
+public class GetItemsOfAProjectTests {
     private static final Environment environment = Environment.getInstance();
     private static final APIManager apiManager = APIManager.getInstance();
     private final ArrayList<Project> projects = new ArrayList<>();
@@ -33,6 +34,7 @@ public class GetItemsOfAProject {
 
     @Test
     public void getItemsOfAProjectById() {
+        Reporter.log("verify that GIVEN the valid credentials and an existent ID WHEN the request GET ITEMS OF A PROJECT BY ID is made THEN answers with status 200",true);
         Project project = projects.get(0);
         Item item = items.get(0);
         String itemsProjectByIdEndpoint = String.format(environment.getItemsProjectsEndpoint(), project.getId());

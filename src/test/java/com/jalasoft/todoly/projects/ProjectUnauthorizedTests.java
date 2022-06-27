@@ -1,12 +1,10 @@
 package com.jalasoft.todoly.projects;
 
 import api.APIManager;
-import entities.NewProject;
 import framework.Environment;
-import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.testng.Assert;
-import org.testng.annotations.BeforeClass;
+import org.testng.Reporter;
 import org.testng.annotations.Test;
 
 public class ProjectUnauthorizedTests {
@@ -14,13 +12,10 @@ public class ProjectUnauthorizedTests {
     private static final Environment environment = Environment.getInstance();
     private static final APIManager apiManager = APIManager.getInstance();
 
-    @BeforeClass
-    public void setup() {
-        apiManager.setCredentials(environment.getInvalidUserName(), environment.getInvalidPassword());
-    }
-
     @Test
-    public void getAllProjects() {
+    public void getAllProjectsInvalidPassword() {
+        Reporter.log("verify that GIVEN the invalid password WHEN the request GET ALL PROJECTS is made then answers with status 200 but error 102",true);
+        apiManager.setCredentials(environment.getUserName(), environment.getInvalidPassword());
         Response response = apiManager.get(environment.getProjectsEndpoint());
 
         Assert.assertEquals(response.getStatusCode(), 200, "Correct status code is not returned");
@@ -30,15 +25,14 @@ public class ProjectUnauthorizedTests {
     }
 
     @Test
-    public void createNewProject() {
-        NewProject newProject = new NewProject("My Testing Project", 2);
-        Response response = apiManager.post(environment.getProjectsEndpoint(), ContentType.JSON, newProject);
+    public void getAllProjectsInvalidUserName() {
+        Reporter.log("verify that GIVEN the invalid username WHEN the request GET ALL PROJECTS is made THEN answers with status 200 but error 105",true);
+        apiManager.setCredentials(environment.getInvalidUserName(), environment.getPassword());
+        Response response = apiManager.get(environment.getProjectsEndpoint());
 
         Assert.assertEquals(response.getStatusCode(), 200, "Correct status code is not returned");
         Assert.assertTrue(response.getStatusLine().contains("200 OK"), "Correct status code and message is not returned");
-        Assert.assertNotNull(response.jsonPath().getString("ErrorMessage"), "Error Message was not returned");
-        Assert.assertNotNull(response.jsonPath().getString("ErrorCode"), "Error Code was not returned");
-        Assert.assertEquals(response.jsonPath().getString("ErrorMessage"), "Not Authenticated", "Incorrect Error Message was returned");
-        Assert.assertEquals(response.jsonPath().getString("ErrorCode"), "102", "Incorrect Error Code was returned");
+        Assert.assertEquals(response.jsonPath().getString("ErrorMessage"),"Account doesn't exist", "Error Message was not returned");
+        Assert.assertEquals(response.jsonPath().getString("ErrorCode"),"105", "Error Code was not returned");
     }
 }
