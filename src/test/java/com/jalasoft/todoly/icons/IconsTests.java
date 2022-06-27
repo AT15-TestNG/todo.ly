@@ -54,7 +54,7 @@ public class IconsTests {
         Assert.assertTrue(response.jsonPath().getString("ErrorCode").contains("102"), "Correct ErrorCode is returned");
     }
 
-    @Test
+    @Test // Bug
     public void getIconByIdWithInvalidId() {
         Reporter.log("Verify that a 200 OK status code and a correct response body result when a GET Icon by Id resquest to the \"/icons/abc.json\" endpoint is executed with invalid id", true);
         Response response = apiManager.get(String.format(environment.getIconsByIdEndPoint(), "abc"));

@@ -5,6 +5,7 @@ import io.restassured.RestAssured;
 import io.restassured.authentication.PreemptiveBasicAuthScheme;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
 import utils.LoggerManager;
 
 public class APIManager {
@@ -33,6 +34,14 @@ public class APIManager {
         authScheme.setUserName(userName);
         authScheme.setPassword(password);
         RestAssured.authentication = authScheme;
+    }
+
+    public RequestSpecification setTokenAuthentication(String token) {
+        return RestAssured.given().header("Token", token);
+    }
+
+    public Response getTokenAuthentication() {
+        return getInstance().get(Environment.getInstance().getAuthenticationTokenEndPoint());
     }
 
     public Response get(String endpoint) {

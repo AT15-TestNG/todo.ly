@@ -113,5 +113,13 @@ public class Environment {
     public String getIconsByIdEndPoint() {
         return getEnvironmentSetting("iconsByIdEndPoint");
     }
+
+    public String getIsAuthenticatedEndPoint() {
+        return getEnvironmentSetting("isAuthenticatedEndPoint");
+    }
+
+    public String getAuthenticationTokenEndPoint() {
+        return getEnvironmentSetting("authenticationTokenEndPoint");
+    }
 }
 
