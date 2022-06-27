@@ -5,13 +5,14 @@ import framework.Environment;
 import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class FiltersUnauthorizedTests {
     private static final Environment env = Environment.getInstance();
     private static final APIManager api = APIManager.getInstance();
 
-    @BeforeClass
+    @BeforeMethod
     public void setup() {
         api.setCredentials(env.getInvalidUserName(), env.getInvalidPassword());
     }
