@@ -30,6 +30,9 @@ public class GetDoneItemsOfAProjectTests {
         if (projects.get(0) == null) {
             Assert.fail("Projects were not created");
         }
+        if (items.get(0) == null) {
+            Assert.fail("Item was not created");
+        }
     }
 
     @Test

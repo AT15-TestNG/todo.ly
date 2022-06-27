@@ -30,6 +30,10 @@ public class GetItemsOfAProjectTests {
         if (projects.get(0) == null) {
             Assert.fail("Projects were not created");
         }
+        if (items.get(0) == null) {
+            Assert.fail("Item was not created");
+        }
+
     }
 
     @Test
@@ -47,7 +51,7 @@ public class GetItemsOfAProjectTests {
         Assert.assertTrue(response.getStatusLine().contains("200 OK"), "Correct status code and message is not returned");
         Assert.assertEquals(response.jsonPath().getString("ErrorMessage"), "[null]", "Error Message was returned");
         Assert.assertEquals(response.jsonPath().getString("ErrorCode"), "[null]","Error Code was returned");
-        Assert.assertEquals(responseProject.getItemsCount(), items.size(), "item 1 is not found");
+        Assert.assertEquals(responseProject.getItemsCount(), 1, "item 1 is not found");
 
     }
 
