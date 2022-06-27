@@ -1,6 +1,8 @@
 package api.methods;
 
 import api.APIManager;
+import entities.Item;
+import entities.NewItem;
 import entities.NewProject;
 import entities.Project;
 import framework.Environment;
@@ -29,6 +31,8 @@ public class APIProjectMethods {
 
     public static boolean deleteProject(int projectId) {
         log.info("Deleting Project " + projectId);
+        environment.getProjectByIdEndpoint();
+
         String projectByIdEndpoint = String.format(environment.getProjectByIdEndpoint(), projectId);
         Response response = apiManager.delete(projectByIdEndpoint);
         Project responseProject = response.as(Project.class);
@@ -40,4 +44,19 @@ public class APIProjectMethods {
             return false;
         }
     }
+
+    public static Item createItem(String content, Integer projectId, Boolean checked) {
+        NewItem item = new NewItem(content, projectId, checked);
+        String itemProjectsEndpoint = environment.getCreateItemEndpoint();
+        Response response = apiManager.post(itemProjectsEndpoint, ContentType.JSON, item);
+        Item responseItemProject = response.as(Item.class);
+
+        if (responseItemProject.getId() != null) {
+            return responseItemProject;
+        } else {
+            log.error("Unable to create a new item");
+            return null;
+        }
+    }
+
 }
