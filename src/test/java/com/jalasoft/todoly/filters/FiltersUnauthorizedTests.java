@@ -22,8 +22,8 @@ public class FiltersUnauthorizedTests {
 
         Assert.assertEquals(res.getStatusCode(), 200, "Correct status code is not returned");
         Assert.assertTrue(res.getStatusLine().contains("200 OK"), "Correct status code and message is not returned");
-        Assert.assertTrue(res.jsonPath().getString("ErrorMessage").contains("Account doesn't exist"), "Correct ErrorMessage is not returned");
-        Assert.assertTrue(res.getBody().asString().contains("\"ErrorCode\":105"), "Error code was not returned");
+        Assert.assertEquals(res.jsonPath().getString("ErrorMessage"), "Account doesn't exist", "Correct ErrorMessage is not returned");
+        Assert.assertEquals(res.jsonPath().getString("ErrorCode"), "105", "Error code was not returned");
     }
 
     @Test(priority = 2)
@@ -33,8 +33,8 @@ public class FiltersUnauthorizedTests {
 
         Assert.assertEquals(res.getStatusCode(), 200, "Correct status code is not returned");
         Assert.assertTrue(res.getStatusLine().contains("200 OK"), "Correct status code and message is returned");
-        Assert.assertTrue(res.jsonPath().getString("ErrorMessage").contains("Account doesn't exist"), "Correct ErrorMessage is not returned");
-        Assert.assertTrue(res.getBody().asString().contains("\"ErrorCode\":105"), "Error code was not returned");
+        Assert.assertEquals(res.jsonPath().getString("ErrorMessage"), "Account doesn't exist", "Correct ErrorMessage is not returned");
+        Assert.assertEquals(res.jsonPath().getString("ErrorCode"), "105", "Error code is not returned");
     }
 
     @Test(priority = 2)
@@ -44,8 +44,8 @@ public class FiltersUnauthorizedTests {
 
         Assert.assertEquals(res.getStatusCode(), 200, "Correct status code is not returned");
         Assert.assertTrue(res.getStatusLine().contains("200 OK"), "Correct status code and message is not returned");
-        Assert.assertTrue(res.jsonPath().getString("ErrorMessage").contains("Account doesn't exist"), "Correct ErrorMessage is not returned");
-        Assert.assertTrue(res.getBody().asString().contains("\"ErrorCode\":105"), "Error code was not returned");
+        Assert.assertEquals(res.jsonPath().getString("ErrorMessage"), "Account doesn't exist", "Correct ErrorMessage is not returned");
+        Assert.assertEquals(res.jsonPath().getString("ErrorCode"), "105", "Correct ErrorCode is not returned");
     }
 
     @Test(priority = 2)
@@ -55,7 +55,7 @@ public class FiltersUnauthorizedTests {
 
         Assert.assertEquals(res.getStatusCode(), 200, "Correct status code is not returned");
         Assert.assertTrue(res.getStatusLine().contains("200 OK"), "Correct status code and message is not returned");
-        Assert.assertTrue(res.jsonPath().getString("ErrorMessage").contains("Account doesn't exist"), "Correct ErrorMessage is not returned");
-        Assert.assertTrue(res.getBody().asString().contains("\"ErrorCode\":105"), "Error code was not returned");
+        Assert.assertEquals(res.jsonPath().getString("ErrorMessage"),"Account doesn't exist", "Correct ErrorMessage is not returned");
+        Assert.assertEquals(res.jsonPath().getString("ErrorCode"),"105", "Correct Error code is not returned");
     }
 }
