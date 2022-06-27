@@ -21,11 +21,7 @@ jobs:
         run: chmod +x gradlew
       - name: Build API Testing framework
         run: ./gradlew clean build
-      - name: Publish Test Results
-        uses: EnricoMi/publish-unit-test-result-action/composite@v1
-        if: always()
-        with:
-          files: "build/test-results/**/*.xml"
+        continue-on-error: true
 
   CodeInspection:
     runs-on: ubuntu-20.04
@@ -43,3 +39,25 @@ jobs:
       run: chmod +x gradlew
     - name: SonarQube Scan
       run: ./gradlew sonarqube
+
+  AcceptanceTests:
+    runs-on: ubuntu-20.04
+    needs: CodeInspection
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          java-version: '16.0.2'
+          distribution: 'adopt'
+          fetch-depth: 0
+      - name: Grant execute permissions for gradlew
+        run: chmod +x gradlew
+      - name: Run Tests
+        run: ./gradlew test
+        continue-on-error: true
+      - name: Publish Test Results
+        uses: EnricoMi/publish-unit-test-result-action/composite@v1
+        if: always()
+        with:
+          files: "build/test-results/**/*.xml"
