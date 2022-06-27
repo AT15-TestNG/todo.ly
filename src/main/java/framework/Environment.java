@@ -52,6 +52,14 @@ public class Environment {
         return getEnvironmentSetting("password");
     }
 
+    public String getInvalidUserName() {
+        return getEnvironmentSetting("invalidUserName");
+    }
+
+    public String getInvalidPassword() {
+        return getEnvironmentSetting("invalidPassword");
+    }
+
     public String getBasePath() {
         return getEnvironmentSetting("basePath");
     }
@@ -66,6 +74,14 @@ public class Environment {
 
     public String getFiltersByIdEndPoint() {
         return getEnvironmentSetting("filtersByIdEndPoint");
+    }
+
+    public String getItemsOfFilterEndpoint() {
+        return getEnvironmentSetting("itemsOfAFilterEndpoint");
+    }
+
+    public String getDoneItemsOfFilterEndpoint() {
+        return getEnvironmentSetting("doneItemsOfAFilterEndpoint");
     }
 
     public String getUserEndpoint() {
