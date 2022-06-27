@@ -6,13 +6,14 @@ import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 public class DoneItemsOfAFilterTests {
     private static final Environment env = Environment.getInstance();
     private static final APIManager api = APIManager.getInstance();
 
-    @AfterClass
+    @BeforeClass
     public void setup() {
         api.setCredentials(env.getUserName(), env.getPassword());
     }
