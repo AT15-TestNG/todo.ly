@@ -15,7 +15,7 @@ public class APIProjectMethods {
     private static final Environment environment = Environment.getInstance();
     private static final APIManager apiManager = APIManager.getInstance();
 
-    public static  Project createProject(String content, int icon) {
+    public static Project createProject(String content, int icon) {
         NewProject project = new NewProject(content, icon);
         String projectsEndpoint = environment.getProjectsEndpoint();
         Response response = apiManager.post(projectsEndpoint, ContentType.JSON, project);
