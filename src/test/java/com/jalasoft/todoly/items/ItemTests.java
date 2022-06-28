@@ -26,8 +26,8 @@ public class ItemTests {
     @BeforeClass
     public void setup() {
         apiManager.setCredentials(environment.getUserName(),environment.getPassword());
-        items.add(APIProjectMethods.createItem("ItemById Test Item", null ,4000128,false));
-        items.add(APIProjectMethods.createItem("ItemById Delete Test Item", null,4000128,false));
+        items.add(APIProjectMethods.createItem("ItemById Test Item", null ,4000240,false));
+        items.add(APIProjectMethods.createItem("ItemById Delete Test Item", null,4000240,false));
         if ((items.get(0))==null||(items.get(1))==null) {
             Assert.fail("Items were not created");
         }
@@ -58,7 +58,7 @@ public class ItemTests {
     }
     @Test
     public void createNewItem() {
-        NewItem newItem = new NewItem("item to test", items.get(0).getId(), 4000128,false);
+        NewItem newItem = new NewItem("item to test", items.get(0).getId(), 4000240,false);
         Response response = apiManager.post(environment.getItemsEndpoint(), ContentType.JSON, newItem);
         Item responseItem = response.as(Item.class);
 

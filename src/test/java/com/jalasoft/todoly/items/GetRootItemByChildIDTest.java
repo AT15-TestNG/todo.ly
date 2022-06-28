@@ -19,8 +19,8 @@ public class GetRootItemByChildIDTest {
     @BeforeClass
     public void setup() {
         apiManager.setCredentials(environment.getUserName(),environment.getPassword());
-        items.add(APIProjectMethods.createItem("Parent Item Test",null,4000128,false));
-        items.add(APIProjectMethods.createItem("Child Item Test",items.get(0).getId(),4000128,false));
+        items.add(APIProjectMethods.createItem("Parent Item Test",null,4000240,false));
+        items.add(APIProjectMethods.createItem("Child Item Test",items.get(0).getId(),4000240,false));
         if ((items.get(0))==null||(items.get(1))==null) {
             Assert.fail("Items were not created");
         }

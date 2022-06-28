@@ -21,15 +21,15 @@ public class ErrorMessageTests {
     @BeforeClass
     public void setup() {
         apiManager.setCredentials(environment.getUserName(),environment.getPassword());
-        items.add(APIProjectMethods.createItem("Parent Item", null ,4000128,false));
-        items.add(APIProjectMethods.createItem("Child Item", items.get(0).getId(),4000128,false));
+        items.add(APIProjectMethods.createItem("Parent Item", null ,4000240,false));
+        items.add(APIProjectMethods.createItem("Child Item", items.get(0).getId(),4000240,false));
         if ((items.get(0))==null||(items.get(1))==null) {
             Assert.fail("Items were not created");
         }
     }
     @Test
     public void tooShortItemName() {
-        NewItem newItem = new NewItem("", items.get(0).getId(), 4000128,false);
+        NewItem newItem = new NewItem("", items.get(0).getId(), 4000240,false);
         Response response = apiManager.post(environment.getItemsEndpoint(), ContentType.JSON, newItem);
         Item responseItem = response.as(Item.class);
 
@@ -50,7 +50,7 @@ public class ErrorMessageTests {
     }
     @Test
     public void invalidParentItemId() {
-        NewItem newItem = new NewItem("Item Test", 70, 4000128,false);
+        NewItem newItem = new NewItem("Item Test", 70, 4000240,false);
         Response response = apiManager.post(environment.getItemsEndpoint(), ContentType.JSON, newItem);
         Item responseItem = response.as(Item.class);
 

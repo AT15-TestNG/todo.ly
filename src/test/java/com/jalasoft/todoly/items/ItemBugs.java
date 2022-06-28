@@ -19,8 +19,8 @@ public class ItemBugs {
     @BeforeClass
     public void setup() {
         apiManager.setCredentials(environment.getUserName(), environment.getPassword());
-        items.add(APIProjectMethods.createItem("ItemById Test Item", null, 4000128, false));
-        items.add(APIProjectMethods.createItem("ItemById Delete Test Item", null, 4000128, false));
+        items.add(APIProjectMethods.createItem("ItemById Test Item", null, 4000240, false));
+        items.add(APIProjectMethods.createItem("ItemById Delete Test Item", null, 4000240, false));
         if ((items.get(0)) == null || (items.get(1)) == null) {
             Assert.fail("Items were not created");
         }
