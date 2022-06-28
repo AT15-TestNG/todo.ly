@@ -1,7 +1,7 @@
 package com.jalasoft.todoly.items;
 
 import api.APIManager;
-import api.methods.APIProjectMethods;
+import api.methods.APIItemMethods;
 import entities.Item;
 import framework.Environment;
 import io.restassured.response.Response;
@@ -16,15 +16,17 @@ public class GetRootItemByChildIDTest {
     private static final Environment environment = Environment.getInstance();
     private static final APIManager apiManager = APIManager.getInstance();
     private final ArrayList<Item> items = new ArrayList<>();
+
     @BeforeClass
     public void setup() {
         apiManager.setCredentials(environment.getUserName(),environment.getPassword());
-        items.add(APIProjectMethods.createItem("Parent Item Test",null,4000240,false));
-        items.add(APIProjectMethods.createItem("Child Item Test",items.get(0).getId(),4000240,false));
+        items.add(APIItemMethods.createItem("Parent Item Test",null,4000240,false));
+        items.add(APIItemMethods.createItem("Child Item Test",items.get(0).getId(),4000240,false));
         if ((items.get(0))==null||(items.get(1))==null) {
             Assert.fail("Items were not created");
         }
     }
+
     @Test
     public void getRootItemByChildID() {
         Item item = items.get(1);
@@ -40,10 +42,11 @@ public class GetRootItemByChildIDTest {
         Assert.assertEquals(responseItem.getProjectId(), items.get(0).getProjectId(), "ProjectId value is incorrect");
         Assert.assertEquals(responseItem.getChecked(), items.get(0).getChecked(), "Checked value is incorrect");
     }
+
     @AfterClass
     public void tearDown() {
         for (Item item: items) {
-            boolean isItemDeleted = APIProjectMethods.deleteItem(item.getId());
+            boolean isItemDeleted = APIItemMethods.deleteItem(item.getId());
             Assert.assertTrue(isItemDeleted,"Item was not deleted");
         }
     }

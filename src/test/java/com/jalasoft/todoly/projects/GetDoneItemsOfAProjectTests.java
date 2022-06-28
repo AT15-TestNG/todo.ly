@@ -1,6 +1,7 @@
 package com.jalasoft.todoly.projects;
 
 import api.APIManager;
+import api.methods.APIItemMethods;
 import api.methods.APIProjectMethods;
 import entities.Item;
 import entities.Project;
@@ -25,7 +26,7 @@ public class GetDoneItemsOfAProjectTests {
         apiManager.setCredentials(environment.getUserName(), environment.getPassword());
 
         projects.add(APIProjectMethods.createProject("ProjectById Test Project", 2));
-        items.add(APIProjectMethods.createItem("Done Item 1", null,projects.get(0).getId(), true));
+        items.add(APIItemMethods.createItem("Done Item 1", null,projects.get(0).getId(), true));
 
         if (projects.get(0) == null) {
             Assert.fail("Projects were not created");
