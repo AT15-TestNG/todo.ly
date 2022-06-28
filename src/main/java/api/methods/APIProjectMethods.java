@@ -45,12 +45,11 @@ public class APIProjectMethods {
         }
     }
 
-    public static Item createItem(String content, Integer projectId, Boolean checked) {
-        NewItem item = new NewItem(content, projectId, checked);
+    public static Item createItem(String content, Integer parentId,Integer projectId, Boolean checked) {
+        NewItem item = new NewItem(content, parentId, projectId, checked);
         String itemProjectsEndpoint = environment.getCreateItemEndpoint();
         Response response = apiManager.post(itemProjectsEndpoint, ContentType.JSON, item);
         Item responseItemProject = response.as(Item.class);
-
         if (responseItemProject.getId() != null) {
             return responseItemProject;
         } else {
@@ -58,5 +57,16 @@ public class APIProjectMethods {
             return null;
         }
     }
-
+    public static boolean deleteItem(int itemId) {
+        log.info("Deleting Item "+ itemId);
+        String itemByIdEndpoint = String.format(environment.getItemsByIdEndpoint(),itemId);
+        Response response = apiManager.delete(itemByIdEndpoint);
+        Item responseItem = response.as(Item.class);
+        if (responseItem.getDeleted()!=null) {
+            return responseItem.getDeleted();
+        } else {
+            log.error("Unable to complete request to delete item "+ itemId);
+            return false;
+        }
+    }
 }

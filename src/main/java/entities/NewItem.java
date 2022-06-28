@@ -11,6 +11,8 @@ import java.util.Map;
 public class NewItem {
     @JsonProperty("Content")
     private String content;
+    @JsonProperty("ParentId")
+    private Integer parentId;
     @JsonProperty("ProjectId")
     private Integer projectId;
     @JsonProperty("Checked")
@@ -18,8 +20,9 @@ public class NewItem {
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    public NewItem(String content, Integer projectId, Boolean checked) {
+    public NewItem(String content, Integer parentId, Integer projectId, Boolean checked) {
         this.content = content;
+        this.parentId = parentId;
         this.projectId = projectId;
         this.checked = checked;
     }
@@ -32,6 +35,13 @@ public class NewItem {
     @JsonProperty("Content")
     public void setContent(String content) {
         this.content = content;
+    }
+    @JsonProperty("ParentId")
+    public Integer getParentId() {return parentId;}
+
+    @JsonProperty("ParentId")
+    public void setParentId(Integer parentId) {
+        this.parentId = parentId;
     }
 
     @JsonProperty("ProjectId")
