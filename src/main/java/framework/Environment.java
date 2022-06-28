@@ -74,6 +74,10 @@ public class Environment {
     }
 
     //Items environment, it might have to change, talk with Sergio
+    public String getItemsEndpoint() { return getEnvironmentSetting("itemsEndpoint");}
+    public String getItemsByIdEndpoint() { return getEnvironmentSetting("itemByIdEndpoint");}
+    public String getRootItemByIdChildEndpoint() {return getEnvironmentSetting("rootItemByIdChildEndpoint");}
+    public String getDoneRootItemByIdChildEndpoint() {return getEnvironmentSetting("doneRootItemByIdChildEndpoint");}
     public String getItemsProjectsEndpoint() {
         return getEnvironmentSetting("itemsProjectByIdEndpoint");
     }
