@@ -25,7 +25,7 @@ public class GetItemsOfAProjectTests {
         apiManager.setCredentials(environment.getUserName(), environment.getPassword());
 
         projects.add(APIProjectMethods.createProject("ProjectById Test Project", 1));
-        items.add(APIProjectMethods.createItem("Item 1", projects.get(0).getId(), false));
+        items.add(APIProjectMethods.createItem("Item 1",null, projects.get(0).getId(), false));
 
         if (projects.get(0) == null) {
             Assert.fail("Projects were not created");
