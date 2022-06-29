@@ -16,7 +16,7 @@ public class Environment {
         initialize();
     }
 
-    /*
+    /**
     * The method is used to get the instance of the class.
     * If the instance is null, it will create a new one.
     * @return the instance of the class.
@@ -29,7 +29,7 @@ public class Environment {
         return instance;
     }
 
-    /*
+    /**
     * This method is used to initialize the properties file.
     * @return the properties file.
     * @throws IOException if the file is not found.
@@ -48,7 +48,7 @@ public class Environment {
         }
     }
 
-    /*
+    /**
     * This method is used to get the value of a property.
     * @param setting the name of the property.
     * @return the value of the property.

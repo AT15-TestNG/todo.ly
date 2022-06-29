@@ -10,6 +10,11 @@ import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.Test;
 
+/**
+ * The UserErrorCodesTest class implements the tests for verifying the Error codes related to User's API.
+ * @author TestNG group: <a href="mailto:adrian.oviedo@fundacion-jala.org">Adrian Oviedo</a>
+ * @version 1.0
+ */
 public class UserErrorCodesTest {
     private static final Environment environment = Environment.getInstance();
     private static final APIManager api = APIManager.getInstance();

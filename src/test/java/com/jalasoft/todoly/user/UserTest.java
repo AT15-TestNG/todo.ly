@@ -14,6 +14,11 @@ import org.testng.annotations.Test;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * The UserTest class implements all the tests for verifying the basic CRUD operations of User's API.
+ * @author TestNG group: <a href="mailto:adrian.oviedo@fundacion-jala.org">Adrian Oviedo</a>
+ * @version 1.0
+ */
 public class UserTest {
     private static final Environment environment = Environment.getInstance();
     private static final APIManager api = APIManager.getInstance();
