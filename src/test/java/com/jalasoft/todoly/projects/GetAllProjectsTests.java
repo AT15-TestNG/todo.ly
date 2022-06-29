@@ -10,7 +10,15 @@ import org.testng.annotations.Test;
 
 import java.util.ArrayList;
 
+/**
+ * The GetAllProjectsTests class implements all the tests for verifying the one of the basic Get operations of Project's API
+ * Get all the projects of one user.
+ * @author TestNG group: <a href="mailto:sergio.mendieta@fundacion-jala.org">Sergio Mendieta</a>
+ * @version 1.0
+ */
+
 public class GetAllProjectsTests {
+
     private static final Environment environment = Environment.getInstance();
     private static final APIManager apiManager = APIManager.getInstance();
     private ArrayList<Integer> projectIds = new ArrayList<>();
