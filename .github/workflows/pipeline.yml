@@ -57,12 +57,18 @@ jobs:
       - name: Grant execute permissions for gradlew
         run: chmod +x gradlew
       - name: Run Tests
-        run: ./gradlew test
+        run: ./gradlew clean test
         continue-on-error: true
+
+      - name: Publish Test Results
+        uses: EnricoMi/publish-unit-test-result-action/composite@v1
+        if: always()
+        with:
+          files: "build/test-results/**/*.xml"
 
       - name: Get Allure history
         uses: actions/checkout@v2
-        if: always()
+        if: ${{ github.event.pull_request.merged == true }}
         continue-on-error: true
         with:
           ref: gh-pages
@@ -70,7 +76,7 @@ jobs:
 
       - name: Allure Report action from marketplace
         uses: simple-elf/allure-report-action@master
-        if: always()
+        if: ${{ github.event.pull_request.merged == true }}
         id: allure-report
         with:
           allure_results: allure-results
@@ -85,9 +91,3 @@ jobs:
           PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PUBLISH_BRANCH: gh-pages
           PUBLISH_DIR: allure-history
-
-      - name: Publish Test Results
-        uses: EnricoMi/publish-unit-test-result-action/composite@v1
-        if: always()
-        with:
-          files: "build/test-results/**/*.xml"
