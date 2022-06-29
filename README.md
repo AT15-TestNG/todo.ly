@@ -2,8 +2,7 @@
 
 ## Todo.ly API Testing
 
-This repository was done for [Todo.ly](https://todo.ly/) API Testing. 
-It is an automated framework implemented in Java, and it is used to test the Todo.ly API.
+This framework was implemented in Java, and it is used to test the [todo.ly](https://todo.ly/) API.
 The following dependencies were used:
 * [Rest Assured](https://rest-assured.io/)
 * [TestNG](https://testng.org/)
@@ -37,7 +36,7 @@ generate the reports and publish the reports on GitHub pages. You can see the te
 [Allure Reports](https://at15-testng.github.io/todo.ly/).
 
 ### More
-This framework is part of AT15 API Testing subject, and was implemented by:
+This framework was created with educative purposes and is part of AT15 API Testing subject, and was implemented by:
 * [Adrian Oviedo](adrian.oviedo@fundacion-jala.org)
 * [Agustin Mediotti](agustin.mediotti@fundacion-jala.org)
 * [Jimy Tastaca](jimy.tastaca@fundacion-jala.org)
