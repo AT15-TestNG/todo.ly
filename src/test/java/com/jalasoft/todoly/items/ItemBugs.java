@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
 import java.util.ArrayList;
 
 /**
- * The ItemBugs class implements all the tests for automating the bugs related to the User's API.
+ * The ItemBugs class implements all the tests for automating the bugs related to the Item's API.
  * @author TestNG group: <a href="mailto:jimy.tastaca@fundacion-jala.org">Jimy Tastaca</a>
  * @version 1.0
  */
