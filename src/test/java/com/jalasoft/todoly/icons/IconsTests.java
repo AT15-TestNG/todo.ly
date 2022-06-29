@@ -9,6 +9,11 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+/**
+ * This class implements the tests for the Icons endpoint.
+ * @author TestNG group: <a href="mailto:saul.fuentes@fundacion-jala.org">Saul Fuentes</a>
+ * @version 1.0
+ */
 public class IconsTests {
     private static final Environment environment = Environment.getInstance();
     private static final APIManager apiManager = APIManager.getInstance();
