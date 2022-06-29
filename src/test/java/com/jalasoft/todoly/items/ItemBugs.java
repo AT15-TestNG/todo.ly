@@ -12,6 +12,11 @@ import org.testng.annotations.Test;
 
 import java.util.ArrayList;
 
+/**
+ * The ItemBugs class implements all the tests for automating the bugs related to the Item's API.
+ * @author TestNG group: <a href="mailto:jimy.tastaca@fundacion-jala.org">Jimy Tastaca</a>
+ * @version 1.0
+ */
 public class ItemBugs {
     private static final Environment environment = Environment.getInstance();
     private static final APIManager apiManager = APIManager.getInstance();

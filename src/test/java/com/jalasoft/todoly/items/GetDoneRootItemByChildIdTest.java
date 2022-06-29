@@ -11,7 +11,11 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;
-
+/**
+ * The GetDoneRootItemByChildIdTest class implements all the tests for verifying the operation GetDoneRootItemByChildId of Item's API
+ * @author TestNG group: <a href="mailto:jimy.tastaca@fundacion-jala.org">Jimy Tastaca</a>
+ * @version 1.0
+ */
 public class GetDoneRootItemByChildIdTest {
     private static final Environment environment = Environment.getInstance();
     private static final APIManager apiManager = APIManager.getInstance();
