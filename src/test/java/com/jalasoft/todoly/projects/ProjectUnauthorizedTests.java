@@ -7,6 +7,12 @@ import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.Test;
 
+/**
+ * The GetAllProjectsTests class implements all the tests for verifying the answers with invalid credentials in the operations of Project's API
+ * @author TestNG group: <a href="mailto:sergio.mendieta@fundacion-jala.org">Sergio Mendieta</a>
+ * @version 1.0
+ */
+
 public class ProjectUnauthorizedTests {
 
     private static final Environment environment = Environment.getInstance();

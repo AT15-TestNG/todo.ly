@@ -12,6 +12,12 @@ import org.testng.annotations.Test;
 
 import java.util.ArrayList;
 
+/**
+ * The DeleteProjectByIdTests class implements all the tests for verifying the basic Delete operations of Project's API
+ * @author TestNG group: <a href="mailto:sergio.mendieta@fundacion-jala.org">Sergio Mendieta</a>
+ * @version 1.0
+ */
+
 public class DeleteProjectByIdTests {
     private static final Environment environment = Environment.getInstance();
     private static final APIManager apiManager = APIManager.getInstance();
