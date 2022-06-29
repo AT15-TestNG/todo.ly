@@ -1,11 +1,9 @@
 package com.jalasoft.todoly.items;
 
 import api.APIManager;
-import api.methods.APIProjectMethods;
+import api.methods.APIItemMethods;
 import entities.Item;
 import entities.NewItem;
-import entities.NewUser;
-import entities.User;
 import framework.Environment;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
@@ -23,15 +21,17 @@ public class ItemTests {
     private static final Environment environment = Environment.getInstance();
     private static final APIManager apiManager = APIManager.getInstance();
     private final ArrayList<Item> items = new ArrayList<>();
+
     @BeforeClass
     public void setup() {
         apiManager.setCredentials(environment.getUserName(),environment.getPassword());
-        items.add(APIProjectMethods.createItem("ItemById Test Item", null ,4000240,false));
-        items.add(APIProjectMethods.createItem("ItemById Delete Test Item", null,4000240,false));
+        items.add(APIItemMethods.createItem("ItemById Test Item", null ,4000240,false));
+        items.add(APIItemMethods.createItem("ItemById Delete Test Item", null,4000240,false));
         if ((items.get(0))==null||(items.get(1))==null) {
             Assert.fail("Items were not created");
         }
     }
+
     @Test
     public void getAllItems() {
         Reporter.log("Verify that a 200 OK status code and a correct response body result when a GET request to the", true);
@@ -42,6 +42,7 @@ public class ItemTests {
         Assert.assertFalse(response.getBody().asString().contains("ErrorMessage"), "Correct response body is returned");
         Assert.assertFalse(response.getBody().asString().contains("ErrorCode"), "Correct response body is not returned");
     }
+
     @Test
     public void getItemById() {
         Item item = items.get(0);
@@ -56,6 +57,7 @@ public class ItemTests {
         Assert.assertEquals(responseItem.getProjectId(), item.getProjectId(), "ProjectId value is incorrect");
         Assert.assertEquals(responseItem.getChecked(), item.getChecked(), "Checked value is incorrect");
     }
+
     @Test
     public void createNewItem() {
         NewItem newItem = new NewItem("item to test", items.get(0).getId(), 4000240,false);
@@ -67,6 +69,7 @@ public class ItemTests {
         Assert.assertFalse(response.body().asString().contains("ErrorCode"), "Correct response body is not returned");
         Assert.assertFalse(response.body().asString().contains("ErrorMessage"), "Correct response body is not returned");
     }
+
     @Test
     public void updateItemById() {
         Item item = items.get(0);
@@ -81,6 +84,7 @@ public class ItemTests {
         Assert.assertNull(response.jsonPath().getString("ErrorCode"), "Error code was returned");
         Assert.assertEquals(responseItem.getChecked(),jsonAsMap.get("Checked"), "Incorrect Checked value was set");
     }
+
     @Test
     public void deleteItemById() {
         Item item = items.get(1);
@@ -93,10 +97,11 @@ public class ItemTests {
         Assert.assertNull(response.jsonPath().getString("ErrorCode"), "Error code was returned");
         Assert.assertTrue(responseItem.getDeleted(), "Item was not deleted");
     }
+
     @AfterClass
     public void tearDown() {
         for (Item item: items) {
-            boolean isItemDeleted = APIProjectMethods.deleteItem(item.getId());
+            boolean isItemDeleted = APIItemMethods.deleteItem(item.getId());
             Assert.assertTrue(isItemDeleted,"Item was not deleted");
         }
     }

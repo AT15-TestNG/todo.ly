@@ -73,11 +73,18 @@ public class Environment {
         return getEnvironmentSetting("projectsEndpoint");
     }
 
-    //Items environment, it might have to change, talk with Sergio
-    public String getItemsEndpoint() { return getEnvironmentSetting("itemsEndpoint");}
-    public String getItemsByIdEndpoint() { return getEnvironmentSetting("itemByIdEndpoint");}
-    public String getRootItemByIdChildEndpoint() {return getEnvironmentSetting("rootItemByIdChildEndpoint");}
-    public String getDoneRootItemByIdChildEndpoint() {return getEnvironmentSetting("doneRootItemByIdChildEndpoint");}
+    public String getItemsEndpoint() {
+        return getEnvironmentSetting("itemsEndpoint");
+    }
+    public String getItemsByIdEndpoint() {
+        return getEnvironmentSetting("itemByIdEndpoint");
+    }
+    public String getRootItemByIdChildEndpoint() {
+        return getEnvironmentSetting("rootItemByIdChildEndpoint");
+    }
+    public String getDoneRootItemByIdChildEndpoint() {
+        return getEnvironmentSetting("doneRootItemByIdChildEndpoint");
+    }
     public String getItemsProjectsEndpoint() {
         return getEnvironmentSetting("itemsProjectByIdEndpoint");
     }
@@ -112,7 +119,9 @@ public class Environment {
         return getEnvironmentSetting("userEndpoint");
     }
 
-    public String getUserByIdEndPoint() { return getEnvironmentSetting("userByIdEndPoint"); }
+    public String getUserByIdEndPoint() {
+        return getEnvironmentSetting("userByIdEndPoint");
+    }
 
     public String getIconsByIdEndPoint() {
         return getEnvironmentSetting("iconsByIdEndPoint");

@@ -1,7 +1,7 @@
 package com.jalasoft.todoly.items;
 
 import api.APIManager;
-import api.methods.APIProjectMethods;
+import api.methods.APIItemMethods;
 import entities.Item;
 import entities.NewItem;
 import framework.Environment;
@@ -18,15 +18,17 @@ public class ErrorMessageTests {
     private static final Environment environment = Environment.getInstance();
     private static final APIManager apiManager = APIManager.getInstance();
     private final ArrayList<Item> items = new ArrayList<>();
+
     @BeforeClass
     public void setup() {
         apiManager.setCredentials(environment.getUserName(),environment.getPassword());
-        items.add(APIProjectMethods.createItem("Parent Item", null ,4000240,false));
-        items.add(APIProjectMethods.createItem("Child Item", items.get(0).getId(),4000240,false));
+        items.add(APIItemMethods.createItem("Parent Item", null ,4000240,false));
+        items.add(APIItemMethods.createItem("Child Item", items.get(0).getId(),4000240,false));
         if ((items.get(0))==null||(items.get(1))==null) {
             Assert.fail("Items were not created");
         }
     }
+
     @Test
     public void tooShortItemName() {
         NewItem newItem = new NewItem("", items.get(0).getId(), 4000240,false);
@@ -38,6 +40,7 @@ public class ErrorMessageTests {
         Assert.assertTrue(response.body().asString().contains("ErrorCode"), "308");
         Assert.assertTrue(response.body().asString().contains("ErrorMessage"), "Too Short Item Name");
     }
+
     @Test
     public void youDontHaveAccessToThisItem() {
         String rootItemByIdChildEndpoint = String.format(environment.getRootItemByIdChildEndpoint(), 123456);
@@ -48,6 +51,7 @@ public class ErrorMessageTests {
         Assert.assertTrue(response.body().asString().contains("ErrorCode"), "309");
         Assert.assertTrue(response.body().asString().contains("ErrorMessage"), "You don't have access to this Item");
     }
+
     @Test
     public void invalidParentItemId() {
         NewItem newItem = new NewItem("Item Test", 70, 4000240,false);
@@ -59,10 +63,11 @@ public class ErrorMessageTests {
         Assert.assertTrue(response.body().asString().contains("ErrorCode"), "303");
         Assert.assertTrue(response.body().asString().contains("ErrorMessage"), "Invalid Parent Item Id");
     }
+
     @AfterClass
     public void tearDown() {
         for (Item item: items) {
-            boolean isItemDeleted = APIProjectMethods.deleteItem(item.getId());
+            boolean isItemDeleted = APIItemMethods.deleteItem(item.getId());
             Assert.assertTrue(isItemDeleted,"Item was not deleted");
         }
     }
