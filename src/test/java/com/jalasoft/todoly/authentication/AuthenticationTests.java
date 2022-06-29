@@ -9,6 +9,15 @@ import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.Test;
 
+/**
+ * This class implements the tests for the authentication endpoint.
+ * @author TestNG group: <a href="mailto:adrian.oviedo@fundacion-jala.org">Adrian Oviedo</a>,
+ * <a href="mailto:agustin.mediotti@fundacion-jala.org">Agustin Mediotti</a>,
+ * <a href="mailto:jimy.tastaca@fundacion-jala.org">Jimy Tastaca</a>,
+ * <a href="mailto:saul.fuentes@fundacion-jala.org">Saul Fuentes</a>,
+ * <a href="mailto:sergio.mendieta@fundacion-jala.org">Sergio Mendieta</a>
+ * @version 1.0
+ */
 public class AuthenticationTests {
     @Test
     public void basicAuthentication() {
