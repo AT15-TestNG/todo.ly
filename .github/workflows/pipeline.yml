@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - '**'
+  pull_request:
+    types: [synchronize]
 env:
   SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
@@ -68,7 +70,7 @@ jobs:
 
       - name: Get Allure history
         uses: actions/checkout@v2
-        if: ${{ github.event.pull_request.merged == true }}
+        if: ${{ github.event.pull_request.synchronize == true }}
         continue-on-error: true
         with:
           ref: gh-pages
@@ -76,7 +78,7 @@ jobs:
 
       - name: Allure Report action from marketplace
         uses: simple-elf/allure-report-action@master
-        if: ${{ github.event.pull_request.merged == true }}
+        if: ${{ github.event.pull_request.synchronize == true }}
         id: allure-report
         with:
           allure_results: allure-results
@@ -85,7 +87,7 @@ jobs:
           allure_history: allure-history
 
       - name: Deploy report to Github Pages
-        if: ${{ github.event.pull_request.merged == true }}
+        if: ${{ github.event.pull_request.synchronize == true }}
         uses: peaceiris/actions-gh-pages@v2
         env:
           PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
