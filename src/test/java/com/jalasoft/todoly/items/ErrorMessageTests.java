@@ -14,6 +14,11 @@ import org.testng.annotations.Test;
 
 import java.util.ArrayList;
 
+/**
+ * The ErrorMessageTests class implements the tests for verifying the Error codes related to Item's API.
+ * @author TestNG group: <a href="mailto:jimy.tastaca@fundacion-jala.org">Jimy Tastaca</a>
+ * @version 1.0
+ */
 public class ErrorMessageTests {
     private static final Environment environment = Environment.getInstance();
     private static final APIManager apiManager = APIManager.getInstance();

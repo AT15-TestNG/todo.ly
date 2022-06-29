@@ -16,7 +16,11 @@ public class GetRootItemByChildIDTest {
     private static final Environment environment = Environment.getInstance();
     private static final APIManager apiManager = APIManager.getInstance();
     private final ArrayList<Item> items = new ArrayList<>();
-
+    /**
+     * The GetRootItemByChildIdTest class implements all the tests for verifying the operation GetRootItemByChildId of Item's API
+     * @author TestNG group: <a href="mailto:jimy.tastaca@fundacion-jala.org">Jimy Tastaca</a>
+     * @version 1.0
+     */
     @BeforeClass
     public void setup() {
         apiManager.setCredentials(environment.getUserName(),environment.getPassword());
